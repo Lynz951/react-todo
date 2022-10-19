@@ -2,18 +2,10 @@ import { useState } from 'react';
 import AddTodo from './AddTodo.js';
 import TaskList from './TaskList.js';
 
-let nextId = 4;
-const initialTodos = [
-  { id: 0, title: 'Get rid of initial todos', done: false },
-  { id: 1, title: 'Use local storage', done: false },
-  { id: 2, title: 'Number of tasks', done: true },
-  { id: 3, title: 'Add bootstrap', done: true },
-];
+let nextId = 0;
 
 export default function TaskApp() {
-  const [todos, setTodos] = useState(
-    initialTodos
-    );
+  const [todos, setTodos] = useState([]);
 
   function handleAddTodo(title) {
     setTodos([
@@ -24,7 +16,7 @@ export default function TaskApp() {
         done: false
       }
     ])
-    localStorage.setItem('id', 'title');
+   
   }
 
   function handleChangeTodo(nextTodo) {
