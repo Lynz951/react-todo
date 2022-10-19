@@ -1,39 +1,62 @@
-import React, { useState } from "react";
+import { useState } from 'react';
+import AddTodo from './AddTodo.js';
+import TaskList from './TaskList.js';
 
+let nextId = 3;
+const initialTodos = [
+  { id: 0, title: 'Get rid of initial todos', done: false },
+  { id: 1, title: 'Use local storage', done: false },
+  { id: 2, title: 'Number of tasks', done: true },
+  { id: 3, title: 'Add bootstrap', done: false },
+];
 
-function App(props) {
+export default function TaskApp() {
+  const [todos, setTodos] = useState(
+    initialTodos
+  );
 
-//     const [ page, setPage] = useState('Home');
-//     const [ data, setData] = useState([]);
-        const [text, setText] = useState('');
+  function handleAddTodo(title) {
+    setTodos([
+      ...todos,
+      {
+        id: nextId++,
+        title: title,
+        done: false
+      }
 
-    // const todoItem = [
-    //     text=  (""),
-    //     active= true,
-    //     id= "1",
-    //     ];
+    ])
+    localStorage.setItem('id', 'title');
+  }
 
-    function handleClick(text) {
-        setText(text);}
-    
-    
-    return (
-      <div className="todoapp">
-        <h1>Todo List</h1>
-      
+  function handleChangeTodo(nextTodo) {
+    setTodos(todos.map(t => {
+      if (t.id === nextTodo.id) {
+        return nextTodo;
+      } else {
+        return t;
+      }
+    }));
+  }
 
-        <input
-            placeholder = "Add task"
-            value = {text}
-            onChange = {e => setText(e.target.value)}
-            />
-
-        <button onClick={() => {
-            setText('');
-            dispatch
-        }}>Add to list</button>
-
-    </div>
+  function handleDeleteTodo(todoId) {
+    setTodos(
+      todos.filter(t => t.id !== todoId)
     );
+    localStorage.removeItem('id', 'title');
+  }
+
+  return (
+    <>
+        <h1>Lindsay's Two Dews</h1>
+      <AddTodo
+        onAddTodo={handleAddTodo}
+      />
+      <TaskList
+        todos={todos}
+        onChangeTodo={handleChangeTodo}
+        onDeleteTodo={handleDeleteTodo}
+      />
+      <h5>You have {todos.length} tasks left two dew!</h5>
+    </>
+  );
 }
-export default App;
