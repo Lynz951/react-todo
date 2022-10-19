@@ -2,18 +2,18 @@ import { useState } from 'react';
 import AddTodo from './AddTodo.js';
 import TaskList from './TaskList.js';
 
-let nextId = 3;
+let nextId = 4;
 const initialTodos = [
   { id: 0, title: 'Get rid of initial todos', done: false },
   { id: 1, title: 'Use local storage', done: false },
   { id: 2, title: 'Number of tasks', done: true },
-  { id: 3, title: 'Add bootstrap', done: false },
+  { id: 3, title: 'Add bootstrap', done: true },
 ];
 
 export default function TaskApp() {
   const [todos, setTodos] = useState(
     initialTodos
-  );
+    );
 
   function handleAddTodo(title) {
     setTodos([
@@ -23,7 +23,6 @@ export default function TaskApp() {
         title: title,
         done: false
       }
-
     ])
     localStorage.setItem('id', 'title');
   }
@@ -46,17 +45,17 @@ export default function TaskApp() {
   }
 
   return (
-    <>
+    <div className='todoapp'>
         <h1>Lindsay's Two Dews</h1>
-      <AddTodo
-        onAddTodo={handleAddTodo}
-      />
-      <TaskList
-        todos={todos}
-        onChangeTodo={handleChangeTodo}
-        onDeleteTodo={handleDeleteTodo}
-      />
-      <h5>You have {todos.length} tasks left two dew!</h5>
-    </>
+        <AddTodo
+            onAddTodo={handleAddTodo}
+        />
+        <TaskList
+            todos={todos}
+            onChangeTodo={handleChangeTodo}
+            onDeleteTodo={handleDeleteTodo}
+        />
+        <h5>You have {todos.length} tasks left two dew!</h5>
+    </div>
   );
 }
