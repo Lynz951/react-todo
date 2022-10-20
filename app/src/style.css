@@ -1,3 +1,37 @@
-.todoapp {
+html {
+    background-color: #FCF89D;
+    
+}
+
+.cont {
     background-color: aliceblue;
+    
+}
+
+.col {
+    background-color: antiquewhite;
+    justify-content: center;
+} 
+
+.row {
+    background-color:#FCF89D;
+    
+   
+}
+
+.image {
+    justify-content: center;
+}
+.section1 {
+    justify-content: center;
+}
+
+.section2 {
+    justify-content: center;
+    padding-left: 50px;
+}
+.cookies {
+    max-height: 400px;
+    padding: 25px;
+    justify-content: center;
 }
