@@ -12,7 +12,7 @@ export default function AddTodo({ onAddTodo }) {
       <button onClick={() => {
         setTitle('');
         onAddTodo(title);
-        localStorage.setItem('id', 'title'); //works but wrong data being added
+        localStorage.setItem('id', (title)); //works but can't get id
       }}>Add</button>
     </>
   )
