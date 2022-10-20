@@ -15,8 +15,9 @@ export default function TaskApp() {
         title: title,
         done: false
       }
-    ])
-   
+      
+    ]) 
+    localStorage.setItem((nextId), (title));
   }
 
   function handleChangeTodo(nextTodo) {
