@@ -14,8 +14,7 @@ export default function TaskApp() {
         id: nextId++,
         title: title,
         done: false
-      }
-      
+      } 
     ]) 
     localStorage.setItem((nextId), (title));
   }
@@ -30,11 +29,11 @@ export default function TaskApp() {
     }));
   }
 
-  function handleDeleteTodo(todoId) {
+  function handleDeleteTodo(todoId, title) {
     setTodos(
       todos.filter(t => t.id !== todoId)
     );
-    localStorage.removeItem('id', 'title');
+    localStorage.removeItem((todoId), (title)); //won't remove first time clicked
   }
 
   return (
