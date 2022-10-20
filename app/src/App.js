@@ -3,10 +3,18 @@ import AddTodo from './AddTodo.js';
 import TaskList from './TaskList.js';
 import photo from './todo.png';
 
+
 let nextId = 0;
 
 export default function TaskApp() {
   const [todos, setTodos] = useState([]);
+  const [page, setPage] = useState("Home");
+  const viewOptions =[
+    "Deleted",
+    "Not done yet",
+    "Completed",
+    "All"
+  ]
 
   function handleAddTodo(title) {
     setTodos([
@@ -61,10 +69,27 @@ export default function TaskApp() {
                     onChangeTodo={handleChangeTodo}
                     onDeleteTodo={handleDeleteTodo}
                 />
-                <h5>You have {todos.length} tasks left two dew!</h5>
+                <h5>You have {todos.length} tasks not done yet.</h5>
+                <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+               
+                  <input type="radio" className="btn-check" name="btnradio" id="completed" autoComplete="off" defaultChecked />
+                  <label className="btn btn-outline-primary" for="completed">Completed</label>
+
+                  <input type="radio" className="btn-check" name="btnradio" id="notdoneyet" autoComplete="off" />
+                  <label className="btn btn-outline-primary" for="notdoneyet">Not done yet</label>
+
+                  <input type="radio" className="btn-check" name="btnradio" id="deleted" autoComplete="off" />
+                  <label className="btn btn-outline-primary" for="deleted">Deleted</label>
+
+                  <input type="radio" className="btn-check" name="btnradio" id="all" autoComplete="off" />
+                  <label className="btn btn-outline-primary" for="all">All</label>
+                </div>
               </div>
+              
           </div>
+          
         </div>
+        
       </div>
   
   );

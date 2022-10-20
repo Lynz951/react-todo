@@ -41,6 +41,7 @@ function Task({ todo, onChange, onDelete }) {
         </button>
       </>
     );
+        
   } else {
     todoContent = (
       <>
